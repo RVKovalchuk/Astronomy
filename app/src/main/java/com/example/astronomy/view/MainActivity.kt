@@ -1,7 +1,8 @@
-package com.example.astronomy
+package com.example.astronomy.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.astronomy.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

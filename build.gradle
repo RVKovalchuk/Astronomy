@@ -4,3 +4,19 @@ plugins {
     id 'com.android.library' version '7.4.0' apply false
     id 'org.jetbrains.kotlin.android' version '1.7.21' apply false
 }
+
+ext {
+    dagger = "2.35.1"
+    dagger_kapt = "2.30.1"
+
+    navigation = "2.5.3"
+    fragment = "1.5.5"
+
+    room = "2.5.0"
+    lifecycle = "2.2.0"
+
+    picasso = "2.71828"
+
+    retrofit = "2.9.0"
+    okHttp = "3.12.6"
+}
