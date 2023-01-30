@@ -8,4 +8,5 @@ object RetrofitConstant {
     const val RETROFIT_GET = "planetary/apod"
     const val RETROFIT_URI = "https://api.nasa.gov/"
 
+    const val THIRTY_MAGIC_NUMBER = 30L
 }

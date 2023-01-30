@@ -1,36 +1,41 @@
-package com.example.spaceinfo2.viewModel
+package com.example.astronomy.viewModel
 
-import android.util.Log
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.astronomy.App
+import com.example.astronomy.data.DataConstants.END_DATE
+import com.example.astronomy.data.DataConstants.PATTERN_OF_DATE
+import com.example.astronomy.data.DataConstants.START_DATE
 import com.example.astronomy.retrofit.AstronomyPictureOfTheDay
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
-class AstronomyPictureOfTheDayRecyclerViewModel : ViewModel() {
-    val retrofit = App.app.dagger.getWebService()
+class AstronomyPictureOfTheDayRecyclerViewModel(app: Application) : AndroidViewModel(app) {
+    val retrofit = (app as App).dagger.getWebService()
+    private val db = (app as App).dagger.getDB()
 
-    val apodList = MutableLiveData<List<AstronomyPictureOfTheDay>>()
+    val apodList = MutableLiveData<List<AstronomyPictureOfTheDay>?>()
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
             val listAstronomyPictureOfTheDayToday =
-                retrofit.getAstronomyPictureOfTheDay(DateFormatter.parse("2022-12-01")?: Date(), DateFormatter.parse("2022-12-31")?: Date())
+                retrofit.getAstronomyPictureOfTheDay(
+                    DateFormatter.parse(START_DATE) ?: Date(),
+                    DateFormatter.parse(END_DATE) ?: Date()
+                )
             if (listAstronomyPictureOfTheDayToday != null) {
-                apodList.postValue(listAstronomyPictureOfTheDayToday!!)
-                Log.d("!!!", listAstronomyPictureOfTheDayToday.toString())
-
+                apodList.postValue(listAstronomyPictureOfTheDayToday)
+                db.apodDao().deleteAllApodsFromDB()
+                db.apodDao().insertAllApodsToDB(listAstronomyPictureOfTheDayToday)
             } else {
-                Log.d("!!!", "Problem with response")
+                apodList.postValue(db.apodDao().getAllApodsFromDB())
             }
         }
     }
 }
 
-
-
-object DateFormatter: SimpleDateFormat("yyyy-MM-dd", Locale.US)
+object DateFormatter : SimpleDateFormat(PATTERN_OF_DATE, Locale.US)

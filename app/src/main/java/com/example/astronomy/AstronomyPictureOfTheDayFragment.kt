@@ -1,7 +1,6 @@
 package com.example.astronomy
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,11 +10,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.astronomy.databinding.FragmentAstronomyPictureOfTheDayBinding
 import com.example.astronomy.retrofit.AstronomyPictureOfTheDay
-import com.example.spaceinfo2.viewModel.AstronomyPictureOfTheDayViewModel
+import com.example.astronomy.viewModel.AstronomyPictureOfTheDayViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-
 
 class AstronomyPictureOfTheDayFragment : Fragment() {
     private val viewModel: AstronomyPictureOfTheDayViewModel by activityViewModels()
@@ -36,10 +34,6 @@ class AstronomyPictureOfTheDayFragment : Fragment() {
         changeVisibility()
         bindButtonNewFragment()
 
-
-        Log.d("VVV", "$_binding")
-
-
         viewModel.apod.observe(
             viewLifecycleOwner
         ) {
@@ -49,13 +43,12 @@ class AstronomyPictureOfTheDayFragment : Fragment() {
         }
     }
 
-
-    private fun bindFragment(apod: AstronomyPictureOfTheDay) {
+    private fun bindFragment(apod: AstronomyPictureOfTheDay?) {
         Picasso.get()
-            .load(apod.url)
+            .load(apod?.url)
             .into(binding.apodImage)
-        binding.apodDescriprion.text = apod.explanation
-        binding.apodTitle.text = apod.title
+        binding.apodDescriprion.text = apod?.explanation
+        binding.apodTitle.text = apod?.title
     }
 
     private fun changeVisibility() {

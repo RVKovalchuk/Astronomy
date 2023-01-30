@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -9,20 +8,20 @@
         android:id="@+id/apod_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:contentDescription="Astronomy picture of the day"
+        android:contentDescription="@string/image_view_description_apod"
+        android:scaleType="centerCrop"
         android:src="@drawable/image_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:scaleType="centerCrop"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/fab_hide"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="@dimen/forty_eight_dp"
+        android:layout_height="@dimen/forty_eight_dp"
         android:clickable="true"
-        android:contentDescription="fab for hiding of title and description of the apod"
+        android:contentDescription="@string/hide_button_description"
         android:focusable="true"
         android:src="@drawable/ic_down"
         app:backgroundTint="@android:color/transparent"
@@ -31,9 +30,10 @@
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/button_download"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="@dimen/forty_eight_dp"
+        android:layout_height="@dimen/forty_eight_dp"
         android:clickable="true"
+        android:contentDescription="@string/download_button_description"
         android:focusable="true"
         android:src="@drawable/ic_download"
         app:backgroundTint="@android:color/transparent"
@@ -42,9 +42,10 @@
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/button_send"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="@dimen/forty_eight_dp"
+        android:layout_height="@dimen/forty_eight_dp"
         android:clickable="true"
+        android:contentDescription="@string/send_button_description"
         android:focusable="true"
         android:src="@drawable/ic_share"
         app:backgroundTint="@android:color/transparent"
@@ -53,21 +54,22 @@
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/button_left"
-        android:layout_width="45dp"
-        android:layout_height="125dp"
+        android:layout_width="@dimen/forty_eight_dp"
+        android:layout_height="@dimen/one_hundred_twenty_four_dp"
+        android:layout_marginStart="@dimen/four_dp"
         android:clickable="true"
+        android:contentDescription="@string/left_button_description"
         android:focusable="true"
-        android:layout_marginStart="5dp"
         android:src="@drawable/ic_left_arrow"
         app:backgroundTint="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:id="@+id/apod_scrollview"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="@dimen/two_hundred_dp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -84,14 +86,14 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="@dimen/twenty_sp" />
 
             <TextView
                 android:id="@+id/apod_descriprion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="@dimen/sixteen_sp" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

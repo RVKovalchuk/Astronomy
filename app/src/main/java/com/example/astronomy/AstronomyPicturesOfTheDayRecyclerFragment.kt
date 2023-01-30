@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.astronomy.databinding.FragmentAstronomyPicturesOfTheDayRecyclerBinding
 import com.example.astronomy.view.recycler.AstronomyPictureOfTheDayAdapter
-import com.example.spaceinfo2.viewModel.AstronomyPictureOfTheDayRecyclerViewModel
+import com.example.astronomy.viewModel.AstronomyPictureOfTheDayRecyclerViewModel
 
 
 class AstronomyPicturesOfTheDayRecyclerFragment : Fragment() {
@@ -30,7 +30,6 @@ class AstronomyPicturesOfTheDayRecyclerFragment : Fragment() {
             adapter.submitList(it)
         }
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
