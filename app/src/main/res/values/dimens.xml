@@ -15,4 +15,9 @@
 
     <dimen name="sixteen_sp">16sp</dimen>
     <dimen name="twenty_sp">20sp</dimen>
+    <dimen name="sixty_dp">60dp</dimen>
+    <dimen name="forty_dp">40dp</dimen>
+
+    <integer name="two">2</integer>
+    <integer name="seven">7</integer>
 </resources>

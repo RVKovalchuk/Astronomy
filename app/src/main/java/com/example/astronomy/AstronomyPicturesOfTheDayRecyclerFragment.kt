@@ -6,10 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.example.astronomy.GeneralConstants.KEY
 import com.example.astronomy.databinding.FragmentAstronomyPicturesOfTheDayRecyclerBinding
 import com.example.astronomy.view.recycler.AstronomyPictureOfTheDayAdapter
 import com.example.astronomy.viewModel.AstronomyPictureOfTheDayRecyclerViewModel
-
 
 class AstronomyPicturesOfTheDayRecyclerFragment : Fragment() {
     private var _binding:
@@ -19,12 +20,15 @@ class AstronomyPicturesOfTheDayRecyclerFragment : Fragment() {
     private val viewModel: AstronomyPictureOfTheDayRecyclerViewModel by activityViewModels()
 
     private val adapter: AstronomyPictureOfTheDayAdapter by lazy {
-        AstronomyPictureOfTheDayAdapter()
+        AstronomyPictureOfTheDayAdapter(onItemClick = {
+            val bundle = Bundle()
+            bundle.putParcelable(KEY, it)
+            findNavController().navigate(resId = R.id.detailsFragment, args = bundle)
+        })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding.recyclerViewApod.adapter = adapter
         viewModel.apodList.observe(viewLifecycleOwner) {
             adapter.submitList(it)

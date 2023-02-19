@@ -19,4 +19,6 @@ ext {
 
     retrofit = "2.9.0"
     okHttp = "3.12.6"
+
+    toolbar='1.1.0'
 }

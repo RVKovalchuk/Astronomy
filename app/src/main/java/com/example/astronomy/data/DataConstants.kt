@@ -11,6 +11,7 @@ object DataConstants {
     const val SERVICE_VERSION = "service_version"
     const val TITLE = "title"
     const val URL = "url"
+    const val IS_FAVORITE = "IsFavorite"
     const val DATE = "date"
     const val START_DATE = "2022-12-20"
     const val END_DATE = "2022-12-31"

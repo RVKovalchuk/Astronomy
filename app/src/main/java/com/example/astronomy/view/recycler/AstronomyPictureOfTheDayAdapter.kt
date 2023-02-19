@@ -5,9 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.example.astronomy.databinding.RecyclerItemAstronomyPictureOfTheDayBinding
 import com.example.astronomy.retrofit.AstronomyPictureOfTheDay
+import javax.security.auth.callback.Callback
 
-class AstronomyPictureOfTheDayAdapter :
-    ListAdapter<AstronomyPictureOfTheDay, AstronomyPictureOfTheDayViewHolder>(
+class AstronomyPictureOfTheDayAdapter(
+    val onItemClick: (AstronomyPictureOfTheDay) -> Unit = {}
+) : ListAdapter<AstronomyPictureOfTheDay, AstronomyPictureOfTheDayViewHolder>(
         AstronomyPictureOfTheDayDiffUtil
     ) {
     override fun onCreateViewHolder(
@@ -16,7 +18,11 @@ class AstronomyPictureOfTheDayAdapter :
     ): AstronomyPictureOfTheDayViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = RecyclerItemAstronomyPictureOfTheDayBinding.inflate(inflater, parent, false)
-        return AstronomyPictureOfTheDayViewHolder(binding)
+        val holder = AstronomyPictureOfTheDayViewHolder(binding)
+        holder.itemView.setOnClickListener {
+            onItemClick(getItem(holder.absoluteAdapterPosition))
+        }
+        return holder
     }
 
     override fun onBindViewHolder(holder: AstronomyPictureOfTheDayViewHolder, position: Int) {

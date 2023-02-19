@@ -9,5 +9,4 @@
     android:orientation="vertical"
     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
     tools:listitem="@layout/recycler_item_astronomy_picture_of_the_day">
-
 </androidx.recyclerview.widget.RecyclerView>
