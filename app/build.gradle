@@ -73,6 +73,5 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:$dagger"
     kapt "com.google.dagger:dagger-compiler:$dagger_kapt"
 
-    //bottom tool bar
-    implementation "nl.joery.animatedbottombar:library:$toolbar"
+
 }

@@ -6,6 +6,8 @@
     <string name="hide_button_description">hide_button_description_apod</string>
     <string name="download_button_description">download_button_description_apod</string>
     <string name="send_button_description">send_button_description_apod</string>
+    <string name="favorite_button">favorite_button_description_apod</string>
+    <string name="send_button_favorite">favorite_button_description_apod</string>
     <string name="left_button_description">left_button_description_apod</string>
 
     <string name="recycler_image_view_description_apod">recycler_image_view_description_apod</string>
@@ -18,4 +20,14 @@
     <string name="title_menu_last_watched">Last</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home_btm">Главная</string>
+    <string name="search_btn">Поиск</string>
+    <string name="favorites_btn">Избранное</string>
+    <string name="home_title">Главная</string>
+    <string name="cancel_btn">Отмена</string>
+    <string name="favorite_btn">В избранное</string>
+    <string name="in_favorite_btn">В избранном</string>
+    <string name="favorites_empty">Добавьте элементы в изранное, чтобы они отразились в списке</string>
+    <string name="share_btn">Share Btn</string>
+    <string name="download_btn">Download Btn</string>
 </resources>

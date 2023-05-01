@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="title_menu_today">Today</string>
-    <string name="title_menu_search">Search</string>
-    <string name="menu_favorite">Favorite</string>
-    <string name="title_menu_last_watched">Last</string>
-</resources>
