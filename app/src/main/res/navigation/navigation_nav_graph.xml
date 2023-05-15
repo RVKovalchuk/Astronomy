@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_nav_graph"
+    app:startDestination="@id/home">
+
+    <fragment
+        android:id="@+id/home"
+        android:name="com.example.astronomy.view.home.HomeFragment"
+        android:label="LoadingFragment" />
+
+    <fragment
+        android:id="@+id/search"
+        android:name="com.example.astronomy.view.search.SearchFragment"
+        android:label="LoadingFragment" />
+
+    <fragment
+        android:id="@+id/favorites"
+        android:name="com.example.astronomy.view.favorites.FavoritesFragment"
+        android:label="LoadingFragment" />
+    <fragment
+        android:id="@+id/settings"
+        android:name="com.example.astronomy.view.settings.SettingsFragment"
+        android:label="SettingsFragment" />
+</navigation>
