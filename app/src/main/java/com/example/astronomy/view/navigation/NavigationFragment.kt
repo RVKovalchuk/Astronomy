@@ -50,6 +50,7 @@ class NavigationFragment : Fragment() {
             when (navState) {
                 NavState.Favorites -> R.id.favorites
                 NavState.Search -> R.id.search
+                NavState.Settings -> R.id.settings
                 else -> R.id.home
             }
         )
@@ -72,6 +73,7 @@ class NavigationFragment : Fragment() {
         val homeColor = if (navState == NavState.Home) selectedColor else unselectedColor
         val searchColor = if (navState == NavState.Search) selectedColor else unselectedColor
         val favoritesColor = if (navState == NavState.Favorites) selectedColor else unselectedColor
+        val settingsColor = if (navState == NavState.Settings) selectedColor else unselectedColor
 
         binding.homeText.setTextColor(homeColor)
         binding.homeImage.imageTintList = homeColor
@@ -81,6 +83,9 @@ class NavigationFragment : Fragment() {
 
         binding.favoritessText.setTextColor(favoritesColor)
         binding.favoritesImage.imageTintList = favoritesColor
+
+        binding.settingsText.setTextColor(settingsColor)
+        binding.settingsImage.imageTintList = settingsColor
     }
 
     override fun onCreateView(

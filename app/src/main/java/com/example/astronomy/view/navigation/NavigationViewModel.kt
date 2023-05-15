@@ -30,4 +30,5 @@ sealed class NavState {
     object Home : NavState()
     object Search : NavState()
     object Favorites : NavState()
+    object Settings : NavState()
 }

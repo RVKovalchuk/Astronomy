@@ -18,4 +18,8 @@
         android:id="@+id/favorites"
         android:name="com.example.astronomy.view.favorites.FavoritesFragment"
         android:label="LoadingFragment" />
+    <fragment
+        android:id="@+id/settings"
+        android:name="com.example.astronomy.view.settings.SettingsFragment"
+        android:label="SettingsFragment" />
 </navigation>

@@ -39,6 +39,11 @@ class DbServiceImpl(apodDb: ApodDB) : DbService {
     override suspend fun add(list: List<Apod>) {
         apodService.insert(list)
     }
+
+    override suspend fun clearCash() {
+        apodService.deleteAll()
+        favoriteApodService.deleteAll()
+    }
 }
 
 interface DbService {
@@ -48,4 +53,5 @@ interface DbService {
     suspend fun removeAll()
     fun getFavorites(): Flow<List<String>>
     suspend fun add(list: List<Apod>)
+    suspend fun clearCash()
 }

@@ -4,6 +4,7 @@ import androidx.room.*
 import com.example.astronomy.data.retrofit.Apod
 import com.example.astronomy.data.retrofit.FavoriteApod
 import com.example.astronomy.data.storage.DataConstants.QUERY_DELETE_ALL
+import com.example.astronomy.data.storage.DataConstants.QUERY_DELETE_ALL_FROM_FAVORITES
 import com.example.astronomy.data.storage.DataConstants.QUERY_FAVORITE_ALL
 import com.example.astronomy.data.storage.DataConstants.QUERY_GET_ALL
 import kotlinx.coroutines.flow.Flow
@@ -36,4 +37,7 @@ interface FavoriteApodDAO {
 
     @Query(QUERY_FAVORITE_ALL)
     fun getAllAsList(): List<FavoriteApod>
+
+    @Query(QUERY_DELETE_ALL_FROM_FAVORITES)
+    fun deleteAll()
 }

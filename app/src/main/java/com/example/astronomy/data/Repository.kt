@@ -1,6 +1,7 @@
 package com.example.astronomy.data
 
 import android.content.Context
+import android.content.res.Configuration
 import android.util.Log
 import com.example.astronomy.data.retrofit.Apod
 import com.example.astronomy.data.retrofit.ApodService
@@ -14,8 +15,8 @@ import kotlinx.coroutines.launch
 import java.util.*
 
 class RepositoryImpl(
-    val dbService: DbService,
-    val webService: ApodService
+    private val dbService: DbService,
+    private val webService: ApodService
 ) : Repository {
 
     private val defaultStartDate by lazy {
@@ -75,6 +76,9 @@ class RepositoryImpl(
         }
     }
 
+    private val mutableNightMode = MutableStateFlow<Boolean?>(null)
+    override val nightMod: StateFlow<Boolean?> = mutableNightMode.asStateFlow()
+
     private fun combineFavorites(
         list: List<ApodFromView>?,
         list2: List<String>?
@@ -94,6 +98,10 @@ class RepositoryImpl(
         if (state.value != RepositoryState.NotStarted && state.value != RepositoryState.Error) return
 
         mutableState.value = RepositoryState.Loading
+
+        coroutineScope.launch {
+            checkNightState(context)
+        }
 
         coroutineScope.launch {
             val dayApodLoad = coroutineScope.launch {
@@ -123,6 +131,16 @@ class RepositoryImpl(
         }
     }
 
+    private fun checkNightState(context: Context) {
+        val mode = context.resources.configuration.uiMode.and(Configuration.UI_MODE_NIGHT_MASK)
+
+        mutableNightMode.value = when (mode) {
+            Configuration.UI_MODE_NIGHT_YES -> true
+            Configuration.UI_MODE_NIGHT_NO -> false
+            else -> null
+        }
+    }
+
     override fun changeFavoriteState(apod: ApodFromView) {
         coroutineScope.launch {
             if (apod.favoriteState.value) {
@@ -148,6 +166,14 @@ class RepositoryImpl(
             }
         }
     }
+
+    override suspend fun clearCash() {
+        dbService.clearCash()
+    }
+
+    override fun changeNigthState(isNigth: Boolean) {
+        mutableNightMode.value = isNigth
+    }
 }
 
 interface Repository {
@@ -158,10 +184,13 @@ interface Repository {
     val favoritesApods: StateFlow<List<ApodFromView>?>
     val startDate: StateFlow<String?>
     val endDate: StateFlow<String?>
+    val nightMod: StateFlow<Boolean?>
 
     fun startLoad(context: Context)
     fun changeFavoriteState(apod: ApodFromView)
+    fun changeNigthState(isNigth: Boolean)
     fun search(from: Date, to: Date)
+    suspend fun clearCash()
 }
 
 sealed interface RepositoryState {

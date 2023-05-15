@@ -30,4 +30,10 @@
     <string name="favorites_empty">Добавьте элементы в изранное, чтобы они отразились в списке</string>
     <string name="share_btn">Share Btn</string>
     <string name="download_btn">Download Btn</string>
+    <string name="setting">Настройки</string>
+    <string name="nigth">Ночной режим</string>
+    <string name="clear_cash">Очистить кеш</string>
+    <string name="clear">Очистить</string>
+    <string name="cash_cleared">Кеш очищен</string>
+    <string name="settings_btn">Настройки</string>
 </resources>

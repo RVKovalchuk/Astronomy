@@ -4,6 +4,7 @@ object DataConstants {
     const val QUERY_GET_ALL = "SELECT * FROM search_table"
     const val QUERY_FAVORITE_ALL = "SELECT * FROM favorite_table"
     const val QUERY_DELETE_ALL = "DELETE FROM search_table"
+    const val QUERY_DELETE_ALL_FROM_FAVORITES = "DELETE FROM favorite_table"
     const val NAME_OF_DB_ALL = "search_table"
     const val NAME_OF_DB_FAV = "favorite_table"
     const val COPYRIGHT = "copyright"
